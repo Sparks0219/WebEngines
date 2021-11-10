@@ -11,6 +11,8 @@ class InvertedIndex:
 
     def __iter__(self):
         i = 2
+        print(self.docs[0])
+        print(self.docs[1])
         while i < len(self.docs):
             size = self.docs[i]
             yield (self.docs[i+1:size+i+1], self.freqs[i-1:size+i-1])
