@@ -13,6 +13,7 @@ class InvertedIndex:
         i = 2
         print(self.docs[0])
         print(self.docs[1])
+        print(self.docs[2])
         print(self.freqs[0])
         print(self.freqs[1])
         while i < len(self.docs):
