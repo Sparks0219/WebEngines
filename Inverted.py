@@ -19,5 +19,5 @@ class InvertedIndex:
     def __next__(self):
         return self
 
-for i, (docs, freqs) in enumerate(InvertedIndex("/home/josh/CW09B")):
+for i, (docs, freqs) in enumerate(InvertedIndex("/home/josh/CW09B/CW09B.url.inv")):
     print(i, docs, freqs)
