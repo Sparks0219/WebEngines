@@ -19,7 +19,7 @@ class InvertedIndex:
 def DeltaEncoding(postingList):
     last = 0 
     countBytes = 0
-    for i in range(0, length(postingList)-1, 1):
+    for i in range(0, len(postingList)-1, 1):
         current = postingList[i]
         delta = current - last;
         last = current;
