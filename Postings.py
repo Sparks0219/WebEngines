@@ -17,14 +17,14 @@ class InvertedIndex:
     
 def GammaEncoding(postingList):
     last = 0 
-    countBytes = 0
+    countBits = 0
     i = 0
     while i < len(postingList):
         print(countBytes)
         current = postingList[i]
         delta = current - last
         last = current
-        countBytes += 2*(np.floor(np.log2(1)).astype(int))+1
+        countBits += 2*(np.floor(np.log2(1)).astype(int))+1
         i +=1
     return countBytes
         
