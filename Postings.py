@@ -15,7 +15,7 @@ class InvertedIndex:
     def __next__(self):
         return self
     
-def GammaCoding(postingList):
+def GammaEncoding(postingList):
     last = 0 
     countBytes = 0
     i = 0
