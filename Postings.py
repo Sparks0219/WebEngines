@@ -9,7 +9,8 @@ class InvertedIndex:
         i = 2
         while i < len(self.docs):
             size = self.docs[i]
-            print(GammaEncoding(self.docs[i+1:size+i+1]))
+            print(VarByteEncoding(self.docs[i+1:size+i+1]))
+            #print(GammaEncoding(self.docs[i+1:size+i+1]))
             i += size+1
         
     def __next__(self):
