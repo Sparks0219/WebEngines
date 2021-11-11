@@ -24,7 +24,7 @@ def GammaEncoding(postingList):
         current = postingList[i]
         delta = current - last
         last = current
-        countBytes += 2*(numpy.ceil(numpy.log2(delta)).astype(int))-1
+        countBytes += 2*(np.ceil(np.log2(delta)).astype(int))-1
         i +=1
     return countBytes
         
