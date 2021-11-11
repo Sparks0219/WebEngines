@@ -23,6 +23,7 @@ def DeltaEncoding(postingList):
     while count < len(postingList):
         print(count)
         print(len(postingList))
+        print(countBytes)
         current = postingList[count]
         delta = current - last;
         last = current;
