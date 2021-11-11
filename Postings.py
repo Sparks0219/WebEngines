@@ -31,7 +31,7 @@ def GammaEncoding(postingList):
 
 def VarByteEncoding(postingList):
     last = 0 
-    countBits = 0
+    countBytes = 0
     i = 0
     while i < len(postingList):
         print(countBytes)
