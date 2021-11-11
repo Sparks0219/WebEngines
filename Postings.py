@@ -6,7 +6,6 @@ class InvertedIndex:
         index_dir = os.path.join(index_name)
         self.docs = np.memmap(index_name + ".docs", dtype=np.uint32,
               mode='r')
-        self.compression = 
     def __iter__(self):
         i = 2
         while i < len(self.docs):
