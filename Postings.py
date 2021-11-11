@@ -26,7 +26,7 @@ def GammaEncoding(postingList):
         last = current
         countBits += 2*(np.floor(np.log2(1)).astype(int))+1
         i +=1
-    return countBytes
+    return countBits
 
 def VarByteEncoding(postingList):
     last = 0 
