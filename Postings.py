@@ -19,18 +19,17 @@ class InvertedIndex:
 def DeltaEncoding(postingList):
     last = 0 
     countBytes = 0
-    count = 0
-    while count < len(postingList):
-        print(count)
+    i = 0
+    while i < len(postingList):
         print(len(postingList))
         print(countBytes)
-        current = postingList[count]
+        current = postingList[i]
         delta = current - last;
         last = current;
         countBytes += delta//128
         if (countBytes%128 != 0):
             countBytes +=1
-        count +=1
+        i +=1
     return countBytes
         
 
