@@ -9,13 +9,13 @@ class InvertedIndex:
         i = 2
         while i < len(self.docs):
             size = self.docs[i]
-            print(DeltaEncoding(self.docs[i+1:size+i+1]))
+            print(GammaEncoding(self.docs[i+1:size+i+1]))
             i += size+1
         
     def __next__(self):
         return self
     
-def DeltaEncoding(postingList):
+def GammaCoding(postingList):
     last = 0 
     countBytes = 0
     i = 0
@@ -24,9 +24,7 @@ def DeltaEncoding(postingList):
         current = postingList[i]
         delta = current - last
         last = current
-        countBytes += delta//128
-        if (delta%128 != 0):
-            countBytes +=1
+        countBytes += 2*(delta.x.bit_length())-1
         i +=1
     return countBytes
         
