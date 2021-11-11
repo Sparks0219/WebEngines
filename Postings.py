@@ -20,7 +20,7 @@ def GammaEncoding(postingList):
     countBits = 0
     i = 0
     while i < len(postingList):
-        print(countBytes)
+        print(countBits)
         current = postingList[i]
         delta = current - last
         last = current
