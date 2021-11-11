@@ -25,10 +25,9 @@ def DeltaEncoding(postingList):
         print(countBytes)
         current = postingList[i]
         delta = current - last
-        print(delta)
         last = current
         countBytes += delta//128
-        if (countBytes%128 != 0):
+        if (delta%128 != 0):
             countBytes +=1
         i +=1
     return countBytes
