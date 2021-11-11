@@ -44,6 +44,8 @@ def VarByteEncoding(postingList):
     return countBytes
         
     
+#def Simple9(postingList):
+#def PforDelta(postingList): 
 
 for i, docs in enumerate(InvertedIndex("/home/josh/output/output.url.inv")):
     print(i, docs)
