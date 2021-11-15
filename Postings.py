@@ -10,8 +10,8 @@ class InvertedIndex:
         while i < len(self.docs):
             size = self.docs[i]
             #Three tuple containing range, size of posting list, encoding
-            os.pipe(self.docs[size+i]-self.docs[i],size,Simple9(self.docs[i+1:size+i+1]))
-            #print(GammaEncoding(self.docs[i+1:size+i+1]))
+            #os.pipe(self.docs[size+i]-self.docs[i],size,Simple9(self.docs[i+1:size+i+1]))
+            print(Simple9(self.docs[i+1:size+i+1]))
             i += size+1
         
     def __next__(self):
