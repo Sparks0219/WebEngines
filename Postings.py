@@ -54,19 +54,19 @@ def Simple9(postingList):
         print(countBytes) 
         if (len(postingList[i::]) >= 28 and max(postingList[i:28]) <= 1):
             i+=28
-        else if (len(postingList[i::]) >= 14 and max(postingList[i:14] <= 3):
+        elif (len(postingList[i::]) >= 14 and max(postingList[i:14] <= 3):
             i+=14
-        else if (len(postingList[i::]) >= 9 and max(postingList[i:9] <= 7):
+        elif (len(postingList[i::]) >= 9 and max(postingList[i:9] <= 7):
             i+=9
-        else if (len(postingList[i::]) >= 7 and max(postingList[i:7] <= 15):
+        elif (len(postingList[i::]) >= 7 and max(postingList[i:7] <= 15):
             i+=7
-        else if (len(postingList[i::]) >= 5 and max(postingList[i:5] <= 31):
+        elif (len(postingList[i::]) >= 5 and max(postingList[i:5] <= 31):
             i+=5
-        else if (len(postingList[i::]) >= 4 and max(postingList[i:4] <= 127):
+        elif (len(postingList[i::]) >= 4 and max(postingList[i:4] <= 127):
             i+=4
-        else if (len(postingList[i::]) >= 3 and max(postingList[i:3] <= 511):
+        elif (len(postingList[i::]) >= 3 and max(postingList[i:3] <= 511):
             i+=3
-        else if (len(postingList[i::]) >= 2 and max(postingList[i:2] <= 16383):
+        elif (len(postingList[i::]) >= 2 and max(postingList[i:2] <= 16383):
             i+=2 
         else: #assuming all numbers are less than 268435456 (2^28)
             i+=1 
