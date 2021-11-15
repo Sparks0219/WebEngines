@@ -9,7 +9,8 @@ class InvertedIndex:
         i = 2
         while i < len(self.docs):
             size = self.docs[i]
-            print(VarByteEncoding(self.docs[i+1:size+i+1]))
+            #Three tuple containing range, size of posting list, encoding
+            os.pipe((self.docs[size+i]-self.docs[i],size,VarByteEncoding(self.docs[i+1:size+i+1]))
             #print(GammaEncoding(self.docs[i+1:size+i+1]))
             i += size+1
         
@@ -48,7 +49,7 @@ def VarByteEncoding(postingList):
     
 def Simple9(postingList):
     i = 0 
-    postingList = [postingList[i]-postingList[i-1] for i in range(len(postingList)) if i == 0 else postingList[i]]
+    postingList = [postingList[i]-postingList[i-1] if i == 0 else postingList[i] for i in range(len(postingList))]
     while i < len(postingList):
         print(countBytes) 
         if (len(postingList[i::]) >= 28 and max(postingList[i:28]) <= 1):
@@ -70,7 +71,13 @@ def Simple9(postingList):
         else: #assuming all numbers are less than 268435456 (2^28)
             i+=1 
         countBytes+=4 
-#def PforDelta(postingList): 
 
+                 
+#def PforDelta(postingList): 
+    
+#def EliasFano(postingList): 
+                 
+                 
+                 
 for i, docs in enumerate(InvertedIndex("/home/josh/output/output.url.inv")):
     print(i, docs)
