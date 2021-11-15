@@ -51,21 +51,21 @@ def Simple9(postingList):
     postingList = [postingList[i]-postingList[i-1] for i in range(len(postingList)) if i == 0 else postingList[i]]
     while i < len(postingList):
         print(countBytes) 
-        if (max(postingList[i:28]) <= 1):
+        if (len(postingList[i::]) >= 28 and max(postingList[i:28]) <= 1):
             i+=28
-        else if (max(postingList[i:14] <= 3):
+        else if (len(postingList[i::]) >= 14 and max(postingList[i:14] <= 3):
             i+=14
-        else if (max(postingList[i:9] <= 7):
+        else if (len(postingList[i::]) >= 9 and max(postingList[i:9] <= 7):
             i+=9
-        else if (max(postingList[i:7] <= 15):
+        else if (len(postingList[i::]) >= 7 and max(postingList[i:7] <= 15):
             i+=7
-        else if (max(postingList[i:5] <= 31):
+        else if (len(postingList[i::]) >= 5 and max(postingList[i:5] <= 31):
             i+=5
-        else if (max(postingList[i:4] <= 127):
+        else if (len(postingList[i::]) >= 4 and max(postingList[i:4] <= 127):
             i+=4
-        else if (max(postingList[i:3] <= 511):
+        else if (len(postingList[i::]) >= 3 and max(postingList[i:3] <= 511):
             i+=3
-        else if (max(postingList[i:2] <= 16383):
+        else if (len(postingList[i::]) >= 2 and max(postingList[i:2] <= 16383):
             i+=2 
         else: #assuming all numbers are less than 268435456 (2^28)
             i+=1 
