@@ -10,7 +10,7 @@ class InvertedIndex:
         while i < len(self.docs):
             size = self.docs[i]
             #Three tuple containing range, size of posting list, encoding
-            os.pipe(self.docs[size+i]-self.docs[i],size,VarByteEncoding(self.docs[i+1:size+i+1]))
+            os.pipe(self.docs[size+i]-self.docs[i],size,Simple9(self.docs[i+1:size+i+1]))
             #print(GammaEncoding(self.docs[i+1:size+i+1]))
             i += size+1
         
@@ -49,7 +49,7 @@ def VarByteEncoding(postingList):
     
 def Simple9(postingList):
     i = 0 
-    postingList = [postingList[i]-postingList[i-1] if i == 0 else postingList[i] for i in range(len(postingList))]
+    postingList = [postingList[i]-postingList[i-1]-1 if i == 0 else postingList[i] for i in range(len(postingList))]
     while i < len(postingList):
         print(countBytes) 
         if (len(postingList[i::]) >= 28 and max(postingList[i:28]) <= 1):
