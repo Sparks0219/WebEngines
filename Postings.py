@@ -52,7 +52,6 @@ def Simple9(postingList):
     countBytes = 0
     #postingList = [postingList[y]-postingList[y-1]-1 if y == 0 else postingList[y] for y in range(len(postingList))]
     while i < len(postingList):
-        print(countBytes) 
         if (len(postingList[i::]) >= 28 and max(postingList[i:28]) <= 1):
             i+=28
         elif (len(postingList[i::]) >= 14 and max(postingList[i:14]) <= 3):
@@ -72,6 +71,7 @@ def Simple9(postingList):
         else: #assuming all numbers are less than 268435456 (2^28)
             i+=1 
         countBytes+=4 
+        print(countBytes) 
     return countBytes 
                  
 #def PforDelta(postingList): 
