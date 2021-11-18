@@ -77,7 +77,7 @@ def Simple9(postingList):
     
 def blockSizePFD(postingList, bstr,index): 
     #Assume Block Size of 128 Integers)
-    offsetCount = 0 
+    offsetCount = -1 #in case the first number in postingList overflows 
     offset = []
     higherBits = []
     for y in range (index,index+128):
