@@ -75,7 +75,35 @@ def Simple9(postingList):
     return countBytes 
                  
     
-#def PforDelta(postingList): 
+def blockSizePFD(postingList, bstr,index): 
+    #Assume Block Size of 128 Integers)
+    offsetCount = 0 
+    offset = []
+    higherBits = []
+    for y in range (i,i+128):
+        if (postingList[i] > 2^bstr -1):
+            shiftNum = postingList[i] >> bstr
+            higherBits.append(shiftNum) 
+            offset.append(offsetCount+1)
+            offsetCount = 0
+        else:
+            offsetCount += 1 
+     return (Simple9(higherBits)+Simple9(offset)+bstr*16) #divide 128 by 8 for bytes 
+    
+def OptPFD(postingList): 
+    bstrVals = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16, 20, 32]
+    byteSizes = [] 
+    countBytes = 0 
+    i = 0 
+    while i < len(postingList):
+        for bstr in bstrVals:
+            byteSizes.append(blockSizePFD(postingList,bstr,i))
+        countBytes += min(byteSizes)
+        i += 128
+    return countBytes 
+        
+        
+                
    
                  
                  
