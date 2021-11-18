@@ -82,9 +82,9 @@ def blockSizePFD(postingList, bstr,index):
     offset = []
     higherBits = []
     for y in range (index,index+128):
-        if (postingList[y] > 2^bstr -1):
+        if (postingList[y] > 2**bstr -1):
             shiftNum = postingList[y] >> bstr
-            print(2^bstr -1,postingList[y],bstr)
+            print(shiftNum,postingList[y],bstr)
             higherBits.append(shiftNum) 
             offset.append(offsetCount+1)
             offsetCount = 0
