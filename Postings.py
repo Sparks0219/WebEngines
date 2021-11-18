@@ -50,7 +50,7 @@ def VarByteEncoding(postingList):
 def Simple9(postingList):
     i = 0 
     countBytes = 0
-    deltaLst = [postingList[y]-postingList[y-1]-1 if y != 0 else postingList[y] for y in range(len(postingList))]
+    #deltaLst = [postingList[y]-postingList[y-1]-1 if y != 0 else postingList[y] for y in range(len(postingList))]
     while i < len(postingList):
         print(countBytes)
         if (len(deltaLst[i::]) >= 28 and max(deltaLst[i:i+28]) <= 1):
