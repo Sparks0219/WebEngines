@@ -50,8 +50,7 @@ def VarByteEncoding(postingList):
 def Simple9(postingList):
     i = 0 
     countBytes = 0
-    print(len(postingList))
-    postingList = [postingList[y]-postingList[y-1]-1 if y != 0 else postingList[y] for y in range(len(postingList))]
+    newLst = [postingList[y]-postingList[y-1]-1 if y != 0 else postingList[y] for y in range(len(postingList))]
     while i < len(postingList):
         print(countBytes) 
         if (len(postingList[i::]) >= 28 and max(postingList[i:i+28]) <= 1):
@@ -75,9 +74,9 @@ def Simple9(postingList):
         countBytes+=4 
     return countBytes 
                  
-#def PforDelta(postingList): 
     
-#def EliasFano(postingList): 
+def PforDelta(postingList): 
+   
                  
                  
                  
