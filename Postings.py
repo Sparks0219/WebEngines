@@ -75,7 +75,7 @@ def Simple9(postingList):
     return countBytes 
                  
     
-def PforDelta(postingList): 
+#def PforDelta(postingList): 
    
                  
                  
