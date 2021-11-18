@@ -52,7 +52,7 @@ def Simple9(postingList):
     countBytes = 0
     #deltaLst = [postingList[y]-postingList[y-1]-1 if y != 0 else postingList[y] for y in range(len(postingList))]
     while i < len(postingList):
-        print(countBytes)
+        #print(countBytes)
         if (len(postingList[i::]) >= 28 and max(postingList[i:i+28]) <= 1):
             i+=28
         elif (len(postingList[i::]) >= 14 and max(postingList[i:i+14]) <= 3):
