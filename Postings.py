@@ -92,21 +92,17 @@ def blockSizePFD(postingList, bstr,index):
     
 def OptPFD(postingList): 
     bstrVals = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16, 20, 32]
-    byteSizes = [] 
     countBytes = 0 
     i = 0 
     while i < len(postingList):
+        byteSizes = [] 
         for bstr in bstrVals:
             byteSizes.append(blockSizePFD(postingList,bstr,i))
         countBytes += min(byteSizes)
+        print(byteSizes)
         i += 128
     return countBytes 
-        
-        
-                
-   
-                 
-                 
+         
                  
 for i, docs in enumerate(InvertedIndex("/home/josh/output/output.url.inv")):
     print(i, docs)
