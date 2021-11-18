@@ -88,7 +88,7 @@ def blockSizePFD(postingList, bstr,index):
             offsetCount = 0
         else:
             offsetCount += 1 
-     return (Simple9(higherBits)+Simple9(offset)+bstr*16) #divide 128 by 8 for bytes 
+    return (Simple9(higherBits)+Simple9(offset)+bstr*16) #divide 128 by 8 for bytes 
     
 def OptPFD(postingList): 
     bstrVals = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16, 20, 32]
