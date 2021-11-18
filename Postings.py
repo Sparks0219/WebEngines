@@ -11,8 +11,7 @@ class InvertedIndex:
             size = self.docs[i]
             #Three tuple containing range, size of posting list, encoding
             #(self.docs[size+i]-self.docs[i],size,SomeEncoding(self.docs[i+1:size+i+1]))
-            #print(OptPFD(self.docs[i+1:size+i+1]))
-            OptPFD([0,1,2,3]*64)
+            print(OptPFD(self.docs[i+1:size+i+1]))
             i += size+1
         
     def __next__(self):
@@ -84,7 +83,6 @@ def blockSizePFD(postingList, bstr,index):
     for y in range (index,index+128):
         if (postingList[y] > 2**bstr -1):
             shiftNum = postingList[y] >> bstr
-            print(shiftNum,postingList[y],bstr)
             higherBits.append(shiftNum) 
             offset.append(offsetCount+1)
             offsetCount = 0
