@@ -72,7 +72,7 @@ def Simple9(postingList):
         else: #assuming all numbers are less than 268435456 (2^28)
             i+=1 
         countBytes+=4 
-        deltaLst = [postingList[y]-postingList[y-1]-1 for y in range(i,min(i+8,len(postingList))]
+        deltaLst = [postingList[y]-postingList[y-1]-1 for y in range(i,min(i+8,len(postingList)))]
     return countBytes 
                  
     
