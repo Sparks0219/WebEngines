@@ -13,7 +13,8 @@ class InvertedIndex:
             #Three tuple containing range, size of posting list, encoding
             #(self.docs[size+i]-self.docs[i],size,SomeEncoding(self.docs[i+1:size+i+1]))
             bytes = VarByteEncoding(self.docs[i+1:size+i+1])
-            f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n"+)
+            print(self.docs[1])
+            f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
             i += size+1
         f.close()
         
