@@ -39,7 +39,7 @@ def VarByteEncoding(postingList):
     countBytes = 0
     i = 0
     while i < len(postingList):
-        print(countBytes)
+        #print(countBytes)
         current = postingList[i]
         delta = current - last - 1 
         last = current
