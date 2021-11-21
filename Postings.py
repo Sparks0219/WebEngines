@@ -7,7 +7,7 @@ class InvertedIndex:
         self.docs = np.memmap(index_name + ".docs", dtype=np.uint32, mode='r')
     def __iter__(self):
         i = 2
-        f = open("myfile.txt", "w")
+        f = open("invData.txt", "w")
         while i < len(self.docs):
             size = self.docs[i]
             #Three tuple containing range, size of posting list, encoding
