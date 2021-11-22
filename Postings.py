@@ -102,7 +102,7 @@ def OptPFD(postingList):
     bstrVals = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16, 20, 32]
     countBytes = 0 
     i = 0
-    newList = postingList.copy()
+    newList = np.copy(postingList)
     for y in range(len(postingList)):
         if (y!=0):
             newList[y] = postingList[y]-postingList[y-1]-1
