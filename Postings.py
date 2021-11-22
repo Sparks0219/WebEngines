@@ -14,6 +14,7 @@ class InvertedIndex:
             #(self.docs[size+i]-self.docs[i],size,SomeEncoding(self.docs[i+1:size+i+1]))
             #print(self.docs[1])
             bytes = VarByteEncoding(self.docs[i+1:size+i+1])
+            print(bytes)
             f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
             i += size+1
         f.close()
