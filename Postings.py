@@ -55,7 +55,7 @@ def VarByteEncoding(postingList):
 def Simple9(postingList):
     i = 0 
     countBytes = 0
-    newList = postingList.copy()
+    newList = np.copy(postingList)
     for y in range(len(postingList)):
         if (y!=0):
             newList[y] = postingList[y]-postingList[y-1]-1
