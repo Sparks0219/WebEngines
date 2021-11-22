@@ -7,7 +7,7 @@ class InvertedIndex:
         self.docs = np.memmap(index_name + ".docs", dtype=np.uint32, mode='r')
     def __iter__(self):
         i = 2
-        f = open("invData.txt", "w")
+        #f = open("invData.txt", "w")
         while i < len(self.docs):
             size = self.docs[i]
             #Three tuple containing range, size of posting list, encoding
@@ -15,9 +15,9 @@ class InvertedIndex:
             #print(self.docs[1])
             bytes = VarByteEncoding(self.docs[i+1:size+i+1])
             print(bytes)
-            f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
+            #f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
             i += size+1
-        f.close()
+        #f.close()
         
     def __next__(self):
         return self
@@ -55,7 +55,9 @@ def VarByteEncoding(postingList):
 def Simple9(postingList):
     i = 0 
     countBytes = 0
-    #deltaLst = [postingList[y]-postingList[y-1]-1 if y != 0 else postingList[y] for y in range(len(postingList))]
+    for y in range(len(postingList)):
+        if (y!=0):
+            postingList[y] = postingList[y]-postingList[y-1]-1
     while i < len(postingList):
         #print(countBytes)
         if (len(postingList[i::]) >= 28 and max(postingList[i:i+28]) <= 1):
@@ -99,6 +101,9 @@ def OptPFD(postingList):
     bstrVals = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16, 20, 32]
     countBytes = 0 
     i = 0
+    for y in range(len(postingList)):
+        if (y!=0):
+            postingList[y] = postingList[y]-postingList[y-1]-1
     while i < len(postingList):
         byteSizes = [] 
         for bstr in bstrVals:
