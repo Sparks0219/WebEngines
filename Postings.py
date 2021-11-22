@@ -14,7 +14,7 @@ class InvertedIndex:
             #(self.docs[size+i]-self.docs[i],size,SomeEncoding(self.docs[i+1:size+i+1]))
             #print(self.docs[1])
             bytes = OptPFD(self.docs[i+1:size+i+1])
-            print(bytes)
+            #print(bytes)
             #f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
             i += size+1
         #f.close()
@@ -107,13 +107,13 @@ def OptPFD(postingList):
         if (y!=0):
             newList[y] = postingList[y]-postingList[y-1]-1
     while i < len(postingList):
+        print(countBytes)
         byteSizes = [] 
         for bstr in bstrVals:
             byteSizes.append(blockSizePFD(postingList,bstr,i))
         countBytes += min(byteSizes)
         print(byteSizes)
         i += 128
-    print(countBytes)
     return countBytes 
          
                  
