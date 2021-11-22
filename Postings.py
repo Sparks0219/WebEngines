@@ -113,6 +113,7 @@ def OptPFD(postingList):
         countBytes += min(byteSizes)
         print(byteSizes)
         i += 128
+    print(countBytes)
     return countBytes 
          
                  
