@@ -24,7 +24,7 @@ class InvertedIndex:
     
 def GammaEncoding(postingList):
     last = 0 
-    countBits = 0
+    countBits =  2*(np.floor(np.log2(postingList[0])).astype(int))+1
     i = 0
     while i < len(postingList):
         print(countBits)
