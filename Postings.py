@@ -88,7 +88,7 @@ def blockSizePFD(postingList, bstr,index):
     offsetCount = -1 #in case the first number in postingList overflows 
     offset = []
     higherBits = []
-    for y in range (index,index+128):
+    for y in range (index,min(index+128,len(postingList))):
         if (postingList[y] > 2**bstr -1):
             shiftNum = postingList[y] >> bstr
             higherBits.append(shiftNum) 
