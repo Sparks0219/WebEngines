@@ -131,7 +131,7 @@ def ipc(postingList,  num,  low,  high):
 #returns number of bits needed for an integer x known to be at most n */
 def nBits(n, x):
     i = (n+1)//2;
-    x = 2*(x-i) if ((x >= i) else 2*(i-x)-1)
+    x = 2*(x-i) if (x >= i) else 2*(i-x)-1
     i = 1
     j = 0
     while (i <= n):
