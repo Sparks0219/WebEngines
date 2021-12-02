@@ -135,10 +135,10 @@ def nBits(n, x):
     i = 1
     j = 0
     while (i <= n):
-        j++
+        j+=1
         i<<=1            
     if ((j > 0) and (x < i-1-n)):
-        j--
+        j-=1
     return(j)
                     
 for i, docs in enumerate(InvertedIndex("/home/josh/output/output.url.inv")):
