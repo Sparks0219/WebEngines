@@ -119,8 +119,11 @@ def OptPFD(postingList):
 #returns number of bits needed to IP encode numbers in array recursively */
 def ipc(postingList,  num,  low,  high):
     print(len(postingList))
-    if (num == 0):
-        return(0)
+    if (num == 1):
+        n = high-low-num-1
+        x = postingList[mid]-low-mid-1
+        c = nBits(n, x)
+        return(c)
     mid = num//2
     n = high-low-num-1
     x = postingList[mid]-low-mid-1
