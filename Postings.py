@@ -12,6 +12,7 @@ class InvertedIndex:
             size = self.docs[i]
             if size >= 4096:
                 #bytes = ipc(self.docs[i+1:size+i+1],size,self.docs[i+1],self.docs[size+i])
+                print(bytes)
                 bytes = VarByteEncoding(self.docs[i+1:size+i+1])
                 f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
             #Three tuple containing range, size of posting list, encoding
