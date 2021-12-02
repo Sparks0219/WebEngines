@@ -116,6 +116,30 @@ def OptPFD(postingList):
         i += 128
     return countBytes 
          
-                 
+#returns number of bits needed to IP encode numbers in array recursively */
+def ipc(postingList,  num,  low,  high)
+    if (num == 0):
+        return(0):
+    mid = num//2;
+    n = high-low-num-1;
+    x = postingList[mid]-low-mid-1;
+    c = nBits(n, x);
+    list1 = np.copy(postingList[::mid+1])
+    list2 = np.copy(postingList[mid+1::]
+    return(c+ipc(list1, mid, low, postingList[mid]) + ipc(list2, num-mid-1, v[mid], high));
+
+#returns number of bits needed for an integer x known to be at most n */
+def nBits(n, x)
+  i = (n+1)//2;
+  x = 2*(x-i) if ((x >= i) else 2*(i-x)-1)
+  i = 1
+  j = 0
+  while (i <= n):
+      j++
+      i<<=1            
+  if ((j > 0) and (x < i-1-n)):
+      j--
+  return(j);
+                    
 for i, docs in enumerate(InvertedIndex("/home/josh/output/output.url.inv")):
     print(i, docs)
