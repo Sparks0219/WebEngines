@@ -126,7 +126,7 @@ def ipc(postingList,  num,  low,  high):
     c = nBits(n, x)
     list1 = np.copy(postingList[::mid+1])
     list2 = np.copy(postingList[mid+1::])
-    return(c+ipc(list1, mid, low, postingList[mid]) + ipc(list2, num-mid-1, v[mid], high))
+    return(c+ipc(list1, list1.size(), low, postingList[mid]) + ipc(list2, list2.size(), postingList[mid], high))
 
 #returns number of bits needed for an integer x known to be at most n */
 def nBits(n, x):
