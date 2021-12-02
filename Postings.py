@@ -11,7 +11,8 @@ class InvertedIndex:
         while i < len(self.docs):
             size = self.docs[i]
             if size >= 4096:
-                bytes = ipc(self.docs[i+1:size+i+1],size,self.docs[i+1],self.docs[size+i])
+                #bytes = ipc(self.docs[i+1:size+i+1],size,self.docs[i+1],self.docs[size+i])
+                bytes = VarByteEncoding(postingList)
                 f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
             #Three tuple containing range, size of posting list, encoding
             #(self.docs[size+i]-self.docs[i],size,SomeEncoding(self.docs[i+1:size+i+1]))
@@ -117,30 +118,31 @@ def OptPFD(postingList):
     return countBytes 
          
 #returns number of bits needed to IP encode numbers in array recursively */
-def ipc(postingList,  num,  low,  high):
-    print(len(postingList))
-    if (num == 0):
-        return(0)
-    mid = num//2
-    n = high-low-num-1
-    x = postingList[mid]-low-mid-1
-    c = nBits(n, x)
-    list1 = np.copy(postingList[::mid+1])
-    list2 = np.copy(postingList[mid+1::])
-    return(c+ipc(list1, len(list1), low, postingList[mid]) + ipc(list2, len(list2), postingList[mid], high))
+
+#def ipc(postingList,  num,  low,  high):
+#    print(len(postingList))
+#    if (num == 0):
+#        return(0)
+#    mid = num//2
+#    n = high-low-num-1
+#    x = postingList[mid]-low-mid-1
+#    c = nBits(n, x)
+#    list1 = np.copy(postingList[::mid+1])
+#    list2 = np.copy(postingList[mid+1::])
+#    return(c+ipc(list1, len(list1), low, postingList[mid]) + ipc(list2, len(list2), postingList[mid], high))
 
 #returns number of bits needed for an integer x known to be at most n */
-def nBits(n, x):
-    i = (n+1)//2;
-    x = 2*(x-i) if (x >= i) else 2*(i-x)-1
-    i = 1
-    j = 0
-    while (i <= n):
-        j+=1
-        i<<=1            
-    if ((j > 0) and (x < i-1-n)):
-        j-=1
-    return(j)
+#def nBits(n, x):
+#    i = (n+1)//2;
+#    x = 2*(x-i) if (x >= i) else 2*(i-x)-1
+#    i = 1
+#    j = 0
+#    while (i <= n):
+#        j+=1
+#        i<<=1            
+#    if ((j > 0) and (x < i-1-n)):
+#        j-=1
+#    return(j)
                     
 for i, docs in enumerate(InvertedIndex("/home/josh/output/output.url.inv")):
     print(i, docs)
