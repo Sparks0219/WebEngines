@@ -87,7 +87,8 @@ def Simple9(postingList):
             i+=2 
         else: #assuming all numbers are less than 268435456 (2^28)
             i+=1 
-        countBytes+=4 
+        countBytes+=4
+    print(countBytes)
     return countBytes 
                  
 def Simple9OneSweep(postingList):
