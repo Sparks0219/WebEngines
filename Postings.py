@@ -56,9 +56,9 @@ def VarByteEncoding(postingList):
 def myMax(begin,blockSize,target,list):
     for i in range(blockSize):
         if list[begin+i] > target:
-            return false
+            return False
         else:
-            return true
+            return True
     
 def Simple9(postingList):
     i = 0 
