@@ -69,21 +69,21 @@ def Simple9(postingList):
             newList[y] = postingList[y]-postingList[y-1]-1
     while i < len(postingList):
         #print(countBytes)
-        if (len(postingList)-1-i >= 28 and myMax(i,28,1,postingList) == true):
+        if (len(postingList)-1-i >= 28 and myMax(i,28,1,newList) == true):
             i+=28
-        elif (len(postingList)-1-i >= 14 and myMax(i,14,3,postingList) == true):
+        elif (len(postingList)-1-i >= 14 and myMax(i,14,3,newList) == true):
             i+=14
-        elif (len(postingList)-1-i >= 9 and myMax(i,9,7,postingList) == true):
+        elif (len(postingList)-1-i >= 9 and myMax(i,9,7,newList) == true):
             i+=9
-        elif (len(postingList)-1-i >= 7 and myMax(i,7,15,postingList) == true):
+        elif (len(postingList)-1-i >= 7 and myMax(i,7,15,newList) == true):
             i+=7
-        elif (len(postingList)-1-i >= 5 and myMax(i,5,31,postingList) == true):
+        elif (len(postingList)-1-i >= 5 and myMax(i,5,31,newList) == true):
             i+=5
-        elif (len(postingList)-1-i >= 4 and myMax(i,4,127,postingList) == true):
+        elif (len(postingList)-1-i >= 4 and myMax(i,4,127,newList) == true):
             i+=4
-        elif (len(postingList)-1-i >= 3 and myMax(i,3,511,postingList) == true):
+        elif (len(postingList)-1-i >= 3 and myMax(i,3,511,newList) == true):
             i+=3
-        elif (len(postingList)-1-i >= 2 and myMax(i,2,16383,postingList) == true):
+        elif (len(postingList)-1-i >= 2 and myMax(i,2,16383,newList) == true):
             i+=2 
         else: #assuming all numbers are less than 268435456 (2^28)
             i+=1 
@@ -97,13 +97,13 @@ def Simple9OneSweep(postingList):
     countBytes = 0
     newList = np.copy(postingList[:1000])
     cases = {1:(28,1), 2:(14,3) ,3:(9,7) ,4:(7,15) ,5:(7,15) ,6:(5,31) , 7:(4,127) , 8:(3,511) , 9:(2,16383) , 10:(1,268435455)}
-#     for y in range(len(postingList)):
-#         if (y!=0):
-#             newList[y] = postingList[y]-postingList[y-1]-1
+    for y in range(len(1000)):
+        if (y!=0):
+            newList[y] = postingList[y]-postingList[y-1]-1
     while i < len(postingList):
         #print(countBytes)
-        if postingList[i] > cases[currentCase][1]:
-            while postingList[i] > cases[currentCase][1]:
+        if newList[i] > cases[currentCase][1]:
+            while newList[i] > cases[currentCase][1]:
                 currentCase+=1
                 if (counter >= cases[currentCase][0]):
                     counter -= cases[currentCase][0]
@@ -114,7 +114,7 @@ def Simple9OneSweep(postingList):
             currentCase = 1 
             counter = 0
         i += 1
-        print(postingList[i])
+        print(counter)
     if (counter != 0):
         countBytes += 4
     return countBytes 
