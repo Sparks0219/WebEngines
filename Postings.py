@@ -114,7 +114,7 @@ def Simple9OneSweep(postingList):
             currentCase = 1 
             counter = 0
         i += 1
-        print(counter)
+        print(postingList[i])
     if (counter != 0):
         countBytes += 4
     return countBytes 
