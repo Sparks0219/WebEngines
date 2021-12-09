@@ -12,7 +12,7 @@ class InvertedIndex:
             size = self.docs[i]
             if size >= 4096:
                 #bytes = ipc(self.docs[i+1:size+i+1],size,self.docs[i+1],self.docs[size+i])
-                bytes = VarByteEncoding(self.docs[i+1:size+i+1])
+                bytes = Simple9OneSweep(self.docs[i+1:size+i+1])
                 f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
                 print(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
             #Three tuple containing range, size of posting list, encoding
@@ -109,11 +109,14 @@ def Simple9OneSweep(postingList):
                     counter -= cases[currentCase][0]
                     countBytes += 4 
         counter+=1 
-        if (counter >= cases[currentCase][0]):
+        if (counter == cases[currentCase][0]):
             countBytes += 4
             currentCase = 1 
             counter = 0
-        i += 1 
+        i += 1
+        print(counter)
+    if (counter != 0):
+        countBytes += 4
     return countBytes 
 def blockSizePFD(postingList, bstr,index): 
     #Assume Block Size of 128 Integers)
