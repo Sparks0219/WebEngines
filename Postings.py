@@ -10,7 +10,7 @@ class InvertedIndex:
         f = open("invData.txt", "w")
         while i < len(self.docs):
             size = self.docs[i]
-            if size >= 4096:
+            if size >= 10000:
                 #bytes = ipc(self.docs[i+1:size+i+1],size,self.docs[i+1],self.docs[size+i])
                 bytes = Simple9OneSweep(self.docs[i+1:size+i+1])
                 f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
