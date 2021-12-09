@@ -63,11 +63,11 @@ def myMax(begin,blockSize,target,list):
 def Simple9(postingList):
     i = 0 
     countBytes = 0
-    newList = np.copy(postingList)
-    for y in range(len(postingList)):
+    newList = np.copy(postingList[:10000])
+    for y in range(len(newList)):
         if (y!=0):
             newList[y] = postingList[y]-postingList[y-1]-1
-    while i < len(postingList):
+    while i < len(newList):
         #print(countBytes)
         if (len(postingList)-1-i >= 28 and myMax(i,28,1,newList) == true):
             i+=28
