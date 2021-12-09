@@ -145,7 +145,7 @@ def OptPFD(postingList):
         print(countBytes)
         byteSizes = [] 
         for bstr in bstrVals:
-            byteSizes.append(blockSizePFD(postingList,bstr,i))
+            byteSizes.append(blockSizePFD(newList,bstr,i))
         countBytes += min(byteSizes)
         print(byteSizes)
         i += 128
