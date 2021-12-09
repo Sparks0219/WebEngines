@@ -95,11 +95,11 @@ def Simple9OneSweep(postingList):
     counter = 0
     currentCase = 1
     countBytes = 0
-    newList = np.copy(postingList)
+    newList = np.copy(postingList[:1000])
     cases = {1:(28,1), 2:(14,3) ,3:(9,7) ,4:(7,15) ,5:(7,15) ,6:(5,31) , 7:(4,127) , 8:(3,511) , 9:(2,16383) , 10:(1,268435455)}
-    for y in range(len(postingList)):
-        if (y!=0):
-            newList[y] = postingList[y]-postingList[y-1]-1
+#     for y in range(len(postingList)):
+#         if (y!=0):
+#             newList[y] = postingList[y]-postingList[y-1]-1
     while i < len(postingList):
         #print(countBytes)
         if postingList[i] > cases[currentCase][1]:
