@@ -12,7 +12,7 @@ class InvertedIndex:
             size = self.docs[i]
             if size >= 10000:
                 #bytes = ipc(self.docs[i+1:size+i+1],size,self.docs[i+1],self.docs[size+i])
-                bytes = Simple9OneSweep(self.docs[i+1:size+i+1])
+                bytes = Simple9(self.docs[i+1:size+i+1])
                 f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
                 print(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
             #Three tuple containing range, size of posting list, encoding
