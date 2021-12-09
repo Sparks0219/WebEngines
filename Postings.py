@@ -69,21 +69,21 @@ def Simple9(postingList):
             newList[y] = postingList[y]-postingList[y-1]-1
     while i < len(newList):
         #print(countBytes)
-        if (len(postingList)-1-i >= 28 and myMax(i,28,1,newList) == true):
+        if (len(postingList)-1-i >= 28 and myMax(i,28,1,newList) == True):
             i+=28
-        elif (len(postingList)-1-i >= 14 and myMax(i,14,3,newList) == true):
+        elif (len(postingList)-1-i >= 14 and myMax(i,14,3,newList) == True):
             i+=14
-        elif (len(postingList)-1-i >= 9 and myMax(i,9,7,newList) == true):
+        elif (len(postingList)-1-i >= 9 and myMax(i,9,7,newList) == True):
             i+=9
-        elif (len(postingList)-1-i >= 7 and myMax(i,7,15,newList) == true):
+        elif (len(postingList)-1-i >= 7 and myMax(i,7,15,newList) == True):
             i+=7
-        elif (len(postingList)-1-i >= 5 and myMax(i,5,31,newList) == true):
+        elif (len(postingList)-1-i >= 5 and myMax(i,5,31,newList) == True):
             i+=5
-        elif (len(postingList)-1-i >= 4 and myMax(i,4,127,newList) == true):
+        elif (len(postingList)-1-i >= 4 and myMax(i,4,127,newList) == True):
             i+=4
-        elif (len(postingList)-1-i >= 3 and myMax(i,3,511,newList) == true):
+        elif (len(postingList)-1-i >= 3 and myMax(i,3,511,newList) == True):
             i+=3
-        elif (len(postingList)-1-i >= 2 and myMax(i,2,16383,newList) == true):
+        elif (len(postingList)-1-i >= 2 and myMax(i,2,16383,newList) == True):
             i+=2 
         else: #assuming all numbers are less than 268435456 (2^28)
             i+=1 
