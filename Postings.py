@@ -117,6 +117,7 @@ def Simple9OneSweep(postingList):
         print(counter)
     if (counter != 0):
         countBytes += 4
+    print(countBytes)
     return countBytes 
 def blockSizePFD(postingList, bstr,index): 
     #Assume Block Size of 128 Integers)
