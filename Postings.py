@@ -67,6 +67,7 @@ def Simple9(postingList):
     for y in range(len(newList)):
         if (y!=0):
             newList[y] = postingList[y]-postingList[y-1]-1
+            print(newList[y])
     while i < len(newList):
         #print(countBytes)
         if (len(postingList)-1-i >= 28 and myMax(i,28,1,newList) == True):
