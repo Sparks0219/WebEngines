@@ -83,6 +83,7 @@ def myMax(begin,blockSize,target,list):
 def Simple9(postingList):
     i = 0 
     countBytes = 0
+    newList = np.copy(postingList)
     for y in range(len(newList)):
         if (y!=0):
             newList[y] = postingList[y]-postingList[y-1]-1
