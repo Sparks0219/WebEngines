@@ -11,7 +11,7 @@ class InvertedIndex:
         while i < len(self.docs):
             size = self.docs[i]
             if size >= 10000:
-                postingList = self.docs[i+1:size+i+1
+                postingList = self.docs[i+1:size+i+1]
                 newList = np.copy(postingList[:10000])
                 #bytes = ipc(self.docs[i+1:size+i+1],size,self.docs[i+1],self.docs[size+i])
 #                 bytes = Simple9(self.docs[i+1:size+i+1])
