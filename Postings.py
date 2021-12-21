@@ -34,8 +34,8 @@ def partitions(postingList,range,file):
     file.write(str(len(postingList))+" "+str(range)+" "+str(bytes)+"\n")
     print(str(len(postingList))+" "+str(range)+" "+str(bytes)+"\n")
     target = np.searchsorted(postingList,range/2)
-    partitions(postingList[:target+1],range//2)
-    partitions(postingList[target+1:],range//2)
+    partitions(postingList[:target],range//2)
+    partitions(postingList[target:],range//2)
     
     
     
