@@ -33,6 +33,7 @@ def partitions(postingList,range,file):
          bytes = GammaEncoding(postingList)
          file.write(str(len(postingList))+" "+str(range)+" "+str(bytes)+"\n")
          print(str(len(postingList))+" "+str(range)+" "+str(bytes)+"\n")
+         return 
     bytes = Simple9(postingList)
     file.write(str(len(postingList))+" "+str(range)+" "+str(bytes)+"\n")
     print(str(len(postingList))+" "+str(range)+" "+str(bytes)+"\n")
