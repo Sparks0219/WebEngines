@@ -12,9 +12,10 @@ class InvertedIndex:
             size = self.docs[i]
             if size >= 10000:
                 #bytes = ipc(self.docs[i+1:size+i+1],size,self.docs[i+1],self.docs[size+i])
-                bytes = Simple9(self.docs[i+1:size+i+1])
-                f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
-                print(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
+#                 bytes = Simple9(self.docs[i+1:size+i+1])
+#                 f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
+#                 print(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
+                partitions(postingList,self.docs[1],f)
             #Three tuple containing range, size of posting list, encoding
             #(self.docs[size+i]-self.docs[i],size,SomeEncoding(self.docs[i+1:size+i+1]))
             #print(self.docs[1])
@@ -23,6 +24,22 @@ class InvertedIndex:
         
     def __next__(self):
         return self
+    
+def partitions(postingList,range,file):
+    if len(postingList) <= 10:
+         bytes = GammaEncoding(postingList)
+         file.write(str(len(postingList))+" "+str(range)+" "+str(bytes)+"\n")
+         print(str(len(postingList))+" "+str(range)+" "+str(bytes)+"\n")
+    bytes = Simple9(postingList)
+    file.write(str(len(postingList))+" "+str(range)+" "+str(bytes)+"\n")
+    print(str(len(postingList))+" "+str(range)+" "+str(bytes)+"\n")
+    target = np.searchsorted(postingList,range/2)
+    partitions(postingList[:target+1],range/2)
+    partitions(postingList[target+1:],range/2)
+    
+    
+    
+    
     
 def GammaEncoding(postingList):
     last = 0 
@@ -153,7 +170,8 @@ def OptPFD(postingList):
         print(byteSizes)
         i += 128
     return countBytes 
-         
+        
+    
 #returns number of bits needed to IP encode numbers in array recursively */
 
 #def ipc(postingList,  num,  low,  high):
