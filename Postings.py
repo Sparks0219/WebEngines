@@ -31,7 +31,7 @@ class InvertedIndex:
 def partitions(postingList,range,file):
     if len(postingList) == 0:
         return
-    if range <= 10 or len(postingList) <= 10:
+    if range <= 10:
          bytes = VarByteEncoding(postingList)
          file.write(str(len(postingList))+" "+str(range)+" "+str(bytes)+"\n")
          print(postingList)
