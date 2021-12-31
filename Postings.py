@@ -12,8 +12,7 @@ class InvertedIndex:
             size = self.docs[i]
             if size >= 10000:
                 postingList = self.docs[i+1:size+i+1]
-                newList = np.copy(postingList[:10000])
-                bytes = Simple9(self.docs[i+1:size+i+1])
+                bytes = Simple9(postingList)
                 f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
                 print(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
                 #partitions(newList,postingList[9999]-postingList[0],f)
@@ -83,7 +82,7 @@ def myMax(begin,blockSize,target,list):
 def Simple9(postingList):
     i = 0 
     countBytes = 0
-    newList = np.copy(postingList)
+    newList = np.copy(postingList[:10000])
     for y in range(len(newList)):
         if (y!=0):
             newList[y] = postingList[y]-postingList[y-1]-1
