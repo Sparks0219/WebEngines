@@ -42,7 +42,7 @@ def partitions(postingList,range,file):
     target = np.searchsorted(postingList,range//2)
     print(postingList)
     print(str(len(postingList))+" "+str(range)+" "+str(bytes))
-    print(str(target))
+    print(str(postingList[target]))
     partitions(postingList[:target],range//2,file)
     partitions(postingList[target:],range//2,file)
     
