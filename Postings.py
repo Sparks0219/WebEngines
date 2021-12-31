@@ -32,7 +32,7 @@ def partitions(postingList,range,file):
     if len(postingList) == 0:
         return
     if len(postingList) <= 10:
-         bytes = Simple9(postingList)
+         bytes = GammaEncoding(postingList)
          file.write(str(len(postingList))+" "+str(range)+" "+str(bytes)+"\n")
          print(postingList)
          print(str(len(postingList))+" "+str(range)+" "+str(bytes))
