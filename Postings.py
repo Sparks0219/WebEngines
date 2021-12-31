@@ -13,7 +13,7 @@ class InvertedIndex:
             if size >= 10000:
                 postingList = self.docs[i+1:size+i+1]
                 newList = np.copy(postingList[:10000])
-                bytes = Simple9OneSweep(self.docs[i+1:size+i+1])
+                bytes = Simple9(self.docs[i+1:size+i+1])
                 f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
                 print(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
                 #partitions(newList,postingList[9999]-postingList[0],f)
