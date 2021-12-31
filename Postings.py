@@ -39,7 +39,7 @@ def partitions(postingList,range,file):
          return 
     bytes = Simple9(postingList)
     file.write(str(len(postingList))+" "+str(range)+" "+str(bytes)+"\n")
-    target = np.searchsorted(postingList,range//2)
+    target = np.searchsorted(postingList,range//2+postingList[0])
     print(postingList)
     print(str(len(postingList))+" "+str(range)+" "+str(bytes))
     partitions(postingList[:target],range//2,file)
