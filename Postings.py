@@ -43,7 +43,7 @@ def partitions(postingList,range,file):
     print(postingList)
     print(str(len(postingList))+" "+str(range)+" "+str(bytes))
     partitions(postingList[:target],range//2,file)
-    partitions(postingList[target:],range//2,file)
+    partitions(postingList[target:],np.ceil(range/2),file)
     
     
     
