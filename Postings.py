@@ -54,7 +54,7 @@ def GammaEncoding(postingList):
     countBits =  2*(np.floor(np.log2(postingList[0])).astype(int))+1
     i = 0
     while i < len(postingList):
-        print(countBits)
+        #print(countBits)
         current = postingList[i]
         delta = current - last
         last = current
