@@ -88,7 +88,6 @@ def Simple9(postingList):
             newList[y] = postingList[y]-postingList[y-1]-1
             #print(newList[y])
     while i < len(newList):
-        #print(countBytes)
         if (len(postingList)-1-i >= 28 and myMax(i,28,1,newList) == True):
             print("CASE 1")
             i+=28
@@ -159,10 +158,14 @@ def Simple9OneSweep(postingList):
 #Helper function for OptPFD, computes the cost for a certain bstrVal
 def blockSizePFD(postingList, bstr,index): 
     #Assume Block Size of 128 Integers)
-    offsetCount = 0 #in case the first number in postingList overflows 
+    offsetCount = 0
+    #Uses offset to store where overflow values appear
     offset = []
+    #Uses higherBits to store the actual bits that overflowed
     higherBits = []
+    #For each chunk of 128 integers
     for y in range (index,min(index+128,len(postingList))):
+        #Case where an overflow occurs
         if (postingList[y] > 2**bstr -1):
             shiftNum = postingList[y] >> bstr
             higherBits.append(shiftNum) 
@@ -183,9 +186,11 @@ def OptPFD(postingList):
             newList[y] = postingList[y]-postingList[y-1]-1
     while i < len(postingList):
         print(countBytes)
+        #Uses a temporary list to hold the byte size cost using each bstrVals 
         byteSizes = [] 
         for bstr in bstrVals:
             byteSizes.append(blockSizePFD(newList,bstr,i))
+        #Picks the optimal one to use
         countBytes += min(byteSizes)
         print(byteSizes)
         i += 128
