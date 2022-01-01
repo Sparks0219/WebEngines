@@ -131,7 +131,6 @@ def Simple9OneSweep(postingList):
         if (y!=0):
             newList[y] = postingList[y]-postingList[y-1]-1
     while i < len(newList):
-        print(i)
         #If a value that cannot be fit in the current case appears, goes to a higher case that can process it
         if newList[i] > cases[currentCase][1]:
             while newList[i] > cases[currentCase][1]:
