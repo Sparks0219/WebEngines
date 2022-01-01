@@ -88,6 +88,7 @@ def Simple9(postingList):
             newList[y] = postingList[y]-postingList[y-1]-1
             #print(newList[y])
     while i < len(newList):
+        print(str(len(postingList)-1-i >= 28))
         if (len(postingList)-1-i >= 28 and myMax(i,28,1,newList) == True):
             print("CASE 1")
             i+=28
