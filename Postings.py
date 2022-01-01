@@ -12,20 +12,24 @@ class InvertedIndex:
             size = self.docs[i]
             if size >= 10000:
                 postingList = self.docs[i+1:size+i+1]
+                #Below commented lines for testing one encoding scheme at just the topmost range level
                 #bytes = Simple9OneSweep(postingList)
                 #f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
                 #print(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
-                partitions(newList,postingList[9999]-postingList[0],f)
+                partitions(newList,postingList[9999]-postingList[0],f,1)
             i += size+1
         f.close()
         
     def __next__(self):
         return self
-    
-def partitions(postingList,range,file):
+
+#Generates all 20 measurements for an individual postings list
+def partitions(postingList,range,file,depth):
+    #Partition results in an empty list on one side of the split, don't do anything
     if len(postingList) == 0:
         return
-    if len(postingList) <= 10:
+    #If the recursive depth of 20 has been reached, then don't recurse any further
+    if depth == 20:
          bytes = GammaEncoding(postingList)
          file.write(str(len(postingList))+" "+str(range)+" "+str(bytes)+"\n")
          print(postingList)
@@ -33,16 +37,15 @@ def partitions(postingList,range,file):
          return 
     bytes = Simple9(postingList)
     file.write(str(len(postingList))+" "+str(range)+" "+str(bytes)+"\n")
+    #searchsorted is equivalent to NEXTGEQ function in numpy library
     target = np.searchsorted(postingList,range//2+postingList[0])
     print(postingList)
     print(str(len(postingList))+" "+str(range)+" "+str(bytes))
-    partitions(postingList[:target],range//2,file)
-    partitions(postingList[target:],np.ceil(range/2),file)
+    partitions(postingList[:target],range//2,file,depth+1)
+    #Ceil to account for uneven splits
+    partitions(postingList[target:],np.ceil(range/2),file,depth+1)
     
-    
-    
-    
-    
+   
 def GammaEncoding(postingList):
     last = 0 
     countBits =  2*(np.floor(np.log2(postingList[0])).astype(int))+1
@@ -72,6 +75,8 @@ def VarByteEncoding(postingList):
         i +=1
     return countBytes
         
+#Helper function for S9, checks if the next blockSize for the current case contains elements strictly below target
+#If all elements are not strictly below, then go to the next case i.e. return False
 def myMax(begin,blockSize,target,list):
     for i in range(blockSize):
         if list[begin+i] > target:
@@ -82,7 +87,7 @@ def myMax(begin,blockSize,target,list):
 def Simple9(postingList):
     i = 0 
     countBytes = 0
-    newList = np.copy(postingList[:10000])
+    newList = np.copy(postingList)
     for y in range(len(newList)):
         if (y!=0):
             newList[y] = postingList[y]-postingList[y-1]-1
@@ -125,7 +130,7 @@ def Simple9OneSweep(postingList):
     counter = 0
     currentCase = 1
     countBytes = 0
-    newList = np.copy(postingList[:10000])
+    newList = np.copy(postingList)
     cases = {1:(28,1), 2:(14,3) ,3:(9,7) ,4:(7,15) ,5:(5,31) , 6:(4,127) , 7:(3,511) , 8:(2,16383) , 9:(1,268435455)}
     for y in range(len(newList)):
         if (y!=0):
