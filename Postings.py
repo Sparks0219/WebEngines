@@ -136,7 +136,7 @@ def Simple9OneSweep(postingList):
             while newList[i] > cases[currentCase][1]:
                 print("CASE "+str(currentCase))
                 currentCase+=1
-                if (counter >= cases[currentCase][0]):
+                if (counter > cases[currentCase][0]):
                     counter -= cases[currentCase][0]
                     countBytes += 4 
         counter+=1 
