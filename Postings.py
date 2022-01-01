@@ -12,10 +12,10 @@ class InvertedIndex:
             size = self.docs[i]
             if size >= 10000:
                 postingList = self.docs[i+1:size+i+1]
-                bytes = Simple9OneSweep(postingList)
-                f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
-                print(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
-                #partitions(newList,postingList[9999]-postingList[0],f)
+                #bytes = Simple9OneSweep(postingList)
+                #f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
+                #print(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
+                partitions(newList,postingList[9999]-postingList[0],f)
             i += size+1
         f.close()
         
