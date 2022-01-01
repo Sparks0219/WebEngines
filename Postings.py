@@ -74,6 +74,7 @@ def VarByteEncoding(postingList):
         
 def myMax(begin,blockSize,target,list):
     for i in range(blockSize):
+        print(str(list[begin+i]))
         if list[begin+i] > target:
             return False
         else:
