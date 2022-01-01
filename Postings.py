@@ -89,31 +89,31 @@ def Simple9(postingList):
             #print(newList[y])
     while i < len(newList):
         if (len(newList)-1-i >= 28 and myMax(i,28,1,newList) == True):
-            print("CASE 1")
+            #print("CASE 1")
             i+=28
         elif (len(newList)-1-i >= 14 and myMax(i,14,3,newList) == True):
-            print("CASE 2")
+            #print("CASE 2")
             i+=14
         elif (len(newList)-1-i >= 9 and myMax(i,9,7,newList) == True):
-            print("CASE 3")
+            #print("CASE 3")
             i+=9
         elif (len(newList)-1-i >= 7 and myMax(i,7,15,newList) == True):
-            print("CASE 4")
+            #print("CASE 4")
             i+=7
         elif (len(newList)-1-i >= 5 and myMax(i,5,31,newList) == True):
-            print("CASE 5")
+            #print("CASE 5")
             i+=5
         elif (len(newList)-1-i >= 4 and myMax(i,4,127,newList) == True):
-            print("CASE 6")
+            #print("CASE 6")
             i+=4
         elif (len(newList)-1-i >= 3 and myMax(i,3,511,newList) == True):
-            print("CASE 7")
+            #print("CASE 7")
             i+=3
         elif (len(newList)-1-i >= 2 and myMax(i,2,16383,newList) == True):
-            print("CASE 8")
+            #print("CASE 8")
             i+=2 
         else: #assuming all numbers are less than 268435456 (2^28)
-            print("CASE 9")
+            #print("CASE 9")
             i+=1 
         countBytes+=4
 #     print(countBytes)
@@ -138,13 +138,13 @@ def Simple9OneSweep(postingList):
                 #If we go to a higher case, then the elements we have already been processed can be fit into a smaller case 
                 #(i.e. going from 28 -> 14, already covered 16 elements)
                 if (counter >= cases[currentCase][0]):
-                    print("CASE "+str(currentCase))
+                    #print("CASE "+str(currentCase))
                     counter -= cases[currentCase][0]
                     countBytes += 4 
         counter+=1 
         #If we have covered sufficient elements for our current case, then start again 
         if (counter == cases[currentCase][0]):
-            print("CASE "+str(currentCase))
+            #print("CASE "+str(currentCase))
             countBytes += 4
             currentCase = 1 
             counter = 0
