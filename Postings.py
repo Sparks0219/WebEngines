@@ -16,7 +16,7 @@ class InvertedIndex:
                 #bytes = Simple9OneSweep(postingList)
                 #f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
                 #print(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
-                partitions(newList,postingList[9999]-postingList[0],f,1)
+                partitions(postingList,postingList[9999]-postingList[0],f,1)
             i += size+1
         f.close()
         
