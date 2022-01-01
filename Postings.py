@@ -30,7 +30,7 @@ def partitions(postingList,range,file,depth):
     if len(postingList) == 0:
         return
     #If the recursive depth of 20 has been reached, then don't recurse any further
-    if depth == 10:
+    if depth == 20:
          bytes = GammaEncoding(postingList)
          file.write(str(len(postingList))+" "+str(range)+" "+str(bytes)+"\n")
          print(postingList)
