@@ -138,7 +138,7 @@ def Simple9OneSweep(postingList):
                 currentCase+=1
                 #If we go to a higher case, then the elements we have already been processed can be fit into a smaller case 
                 #(i.e. going from 28 -> 14, already covered 16 elements)
-                if (counter > cases[currentCase][0]):
+                if (counter >= cases[currentCase][0]):
                     print("CASE "+str(currentCase))
                     counter -= cases[currentCase][0]
                     countBytes += 4 
