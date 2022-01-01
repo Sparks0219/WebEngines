@@ -88,29 +88,28 @@ def Simple9(postingList):
             newList[y] = postingList[y]-postingList[y-1]-1
             #print(newList[y])
     while i < len(newList):
-        print(str(len(postingList)-1-i))
-        if (len(postingList)-1-i >= 28 and myMax(i,28,1,newList) == True):
+        if (len(newList)-1-i >= 28 and myMax(i,28,1,newList) == True):
             print("CASE 1")
             i+=28
-        elif (len(postingList)-1-i >= 14 and myMax(i,14,3,newList) == True):
+        elif (len(newList)-1-i >= 14 and myMax(i,14,3,newList) == True):
             print("CASE 2")
             i+=14
-        elif (len(postingList)-1-i >= 9 and myMax(i,9,7,newList) == True):
+        elif (len(newList)-1-i >= 9 and myMax(i,9,7,newList) == True):
             print("CASE 3")
             i+=9
-        elif (len(postingList)-1-i >= 7 and myMax(i,7,15,newList) == True):
+        elif (len(newList)-1-i >= 7 and myMax(i,7,15,newList) == True):
             print("CASE 4")
             i+=7
-        elif (len(postingList)-1-i >= 5 and myMax(i,5,31,newList) == True):
+        elif (len(newList)-1-i >= 5 and myMax(i,5,31,newList) == True):
             print("CASE 5")
             i+=5
-        elif (len(postingList)-1-i >= 4 and myMax(i,4,127,newList) == True):
+        elif (len(newList)-1-i >= 4 and myMax(i,4,127,newList) == True):
             print("CASE 6")
             i+=4
-        elif (len(postingList)-1-i >= 3 and myMax(i,3,511,newList) == True):
+        elif (len(newList)-1-i >= 3 and myMax(i,3,511,newList) == True):
             print("CASE 7")
             i+=3
-        elif (len(postingList)-1-i >= 2 and myMax(i,2,16383,newList) == True):
+        elif (len(newList)-1-i >= 2 and myMax(i,2,16383,newList) == True):
             print("CASE 8")
             i+=2 
         else: #assuming all numbers are less than 268435456 (2^28)
