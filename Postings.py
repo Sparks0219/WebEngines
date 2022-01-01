@@ -12,6 +12,7 @@ class InvertedIndex:
             size = self.docs[i]
             if size >= 10000:
                 postingList = self.docs[i+1:size+i+1]
+                postingList = postingList[:10000]
                 #Below commented lines for testing one encoding scheme at just the topmost range level
                 #bytes = Simple9OneSweep(postingList)
                 #f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
