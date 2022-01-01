@@ -12,7 +12,7 @@ class InvertedIndex:
             size = self.docs[i]
             if size >= 10000:
                 postingList = self.docs[i+1:size+i+1]
-                bytes = Simple9OneSweep(postingList)
+                bytes = Simple9(postingList)
                 f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
                 print(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
                 #partitions(newList,postingList[9999]-postingList[0],f)
@@ -88,6 +88,7 @@ def Simple9(postingList):
             newList[y] = postingList[y]-postingList[y-1]-1
 #             print(newList[y])
     while i < len(newList):
+        print(newList[i])
         #print(countBytes)
         if (len(postingList)-1-i >= 28 and myMax(i,28,1,newList) == True):
             print("CASE 1")
