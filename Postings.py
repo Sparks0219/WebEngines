@@ -74,7 +74,6 @@ def VarByteEncoding(postingList):
         
 def myMax(begin,blockSize,target,list):
     for i in range(blockSize):
-        print(str(blockSize))
         if list[begin+i] > target:
             return False
         else:
@@ -120,7 +119,8 @@ def Simple9(postingList):
         countBytes+=4
 #     print(countBytes)
     return countBytes 
-                 
+
+#S9 One Sweep Version 
 def Simple9OneSweep(postingList):
     i = 0 
     counter = 0
@@ -132,16 +132,18 @@ def Simple9OneSweep(postingList):
         if (y!=0):
             newList[y] = postingList[y]-postingList[y-1]-1
     while i < len(newList):
-        #print(countBytes)
-        print(newList[i])
+        #If a value that cannot be fit in the current case appears, goes to a higher case that can process it
         if newList[i] > cases[currentCase][1]:
             while newList[i] > cases[currentCase][1]:
                 currentCase+=1
+                #If we go to a higher case, then the elements we have already been processed can be fit into a smaller case 
+                #(i.e. going from 28 -> 14, already covered 16 elements)
                 if (counter > cases[currentCase][0]):
                     print("CASE "+str(currentCase))
                     counter -= cases[currentCase][0]
                     countBytes += 4 
         counter+=1 
+        #If we have covered sufficient elements for our current case, then start again 
         if (counter == cases[currentCase][0]):
             print("CASE "+str(currentCase))
             countBytes += 4
@@ -153,6 +155,8 @@ def Simple9OneSweep(postingList):
         countBytes += 4
     print(countBytes)
     return countBytes 
+
+#Helper function for OptPFD, computes the cost for a certain bstrVal
 def blockSizePFD(postingList, bstr,index): 
     #Assume Block Size of 128 Integers)
     offsetCount = 0 #in case the first number in postingList overflows 
@@ -164,10 +168,11 @@ def blockSizePFD(postingList, bstr,index):
             higherBits.append(shiftNum) 
             offset.append(offsetCount)
             offsetCount = 0
-        else:
+        else:   
             offsetCount += 1 
     return (Simple9(higherBits)+Simple9(offset)+bstr*16) #divide 128 by 8 for bytes 
-    
+
+#Main OptPFD function, after computing the cost for all bstrVals, picks the optimal one 
 def OptPFD(postingList): 
     bstrVals = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16, 20, 32]
     countBytes = 0 
