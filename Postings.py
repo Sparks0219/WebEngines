@@ -122,7 +122,6 @@ def Simple9(postingList):
             #print("CASE 9")
             i+=1 
         countBytes+=4
-        print(countBytes)
     return countBytes 
 
 #S9 One Sweep Version 
