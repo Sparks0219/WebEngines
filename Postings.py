@@ -12,7 +12,7 @@ class InvertedIndex:
             size = self.docs[i]
             if size >= 10000:
                 postingList = self.docs[i+1:size+i+1]
-                bytes = Simple9OneSweep(postingList)
+                bytes = Simple9(postingList)
                 f.write(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
                 print(str(size)+" "+str(self.docs[1])+" "+str(bytes)+"\n")
                 #partitions(newList,postingList[9999]-postingList[0],f)
@@ -74,6 +74,7 @@ def VarByteEncoding(postingList):
         
 def myMax(begin,blockSize,target,list):
     for i in range(blockSize):
+        print(str(list[begin+i]))
         if list[begin+i] > target:
             return False
     return True
