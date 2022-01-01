@@ -76,8 +76,8 @@ def myMax(begin,blockSize,target,list):
     for i in range(blockSize):
         if list[begin+i] > target:
             return False
-        else:
-            return True
+    return True
+        
     
 def Simple9(postingList):
     i = 0 
